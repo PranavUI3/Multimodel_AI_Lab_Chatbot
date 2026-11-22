@@ -4,7 +4,14 @@ Streamlit Application Entry Point.
 """
 
 import os
+import sys
 from pathlib import Path
+
+# Ensure frontend root directory is at the beginning of sys.path
+frontend_dir = str(Path(__file__).resolve().parent)
+if frontend_dir not in sys.path:
+    sys.path.insert(0, frontend_dir)
+
 import streamlit as st
 
 # 1. Page Configuration

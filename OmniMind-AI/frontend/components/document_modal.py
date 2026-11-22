@@ -4,7 +4,7 @@ Allows uploading PDF or DOCX documents to the FastAPI backend.
 """
 
 import streamlit as st
-from ..services.api_client import api_client
+from services.api_client import api_client
 
 
 def render_document_uploader():

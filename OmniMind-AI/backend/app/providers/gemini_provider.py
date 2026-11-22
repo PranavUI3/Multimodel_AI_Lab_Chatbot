@@ -81,11 +81,23 @@ class GeminiProvider(BaseAIProvider):
                     ))
             contents.append(prompt)
 
-            response = self._client.models.generate_content(
-                model=self.model_name,
-                contents=contents
-            )
-            return response.text or "No response received from Gemini."
+            models_to_try = [self.model_name, "gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
+            last_err = None
+            for m in dict.fromkeys(models_to_try):
+                try:
+                    response = self._client.models.generate_content(
+                        model=m,
+                        contents=contents
+                    )
+                    return response.text or "No response received from Gemini."
+                except Exception as ex:
+                    last_err = ex
+                    err_str = str(ex)
+                    if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str:
+                        continue
+                    raise ex
+
+            raise last_err or Exception("All Gemini model attempts failed.")
         except Exception as e:
             logger.error("Gemini text generation failed: %s", e)
             raise HTTPException(
@@ -113,11 +125,22 @@ class GeminiProvider(BaseAIProvider):
                 data=image_bytes,
                 mime_type=mime_type
             )
-            response = self._client.models.generate_content(
-                model=self.model_name,
-                contents=[user_prompt, image_part]
-            )
-            return response.text or "No visual analysis generated."
+            models_to_try = [self.model_name, "gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
+            last_err = None
+            for m in dict.fromkeys(models_to_try):
+                try:
+                    response = self._client.models.generate_content(
+                        model=m,
+                        contents=[user_prompt, image_part]
+                    )
+                    return response.text or "No visual analysis generated."
+                except Exception as ex:
+                    last_err = ex
+                    err_str = str(ex)
+                    if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str:
+                        continue
+                    raise ex
+            raise last_err or Exception("All vision model attempts failed.")
         except Exception as e:
             logger.error("Gemini image analysis error: %s", e)
             raise HTTPException(
@@ -150,11 +173,22 @@ class GeminiProvider(BaseAIProvider):
                 if action == "transcribe"
                 else "Please listen to this audio recording, transcribe it, and provide an executive summary with bullet points."
             )
-            response = self._client.models.generate_content(
-                model=self.model_name,
-                contents=[instruction, audio_part]
-            )
-            return response.text or "No audio transcription generated."
+            models_to_try = [self.model_name, "gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
+            last_err = None
+            for m in dict.fromkeys(models_to_try):
+                try:
+                    response = self._client.models.generate_content(
+                        model=m,
+                        contents=[instruction, audio_part]
+                    )
+                    return response.text or "No audio transcription generated."
+                except Exception as ex:
+                    last_err = ex
+                    err_str = str(ex)
+                    if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str:
+                        continue
+                    raise ex
+            raise last_err or Exception("All audio model attempts failed.")
         except Exception as e:
             logger.error("Gemini audio processing error: %s", e)
             raise HTTPException(

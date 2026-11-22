@@ -25,7 +25,7 @@ class Settings(BaseModel):
     HUGGINGFACE_API_KEY: str = Field(default_factory=lambda: os.getenv("HUGGINGFACE_API_KEY", ""))
 
     # Models
-    GEMINI_MODEL: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "gemini-2.5-flash"))
+    GEMINI_MODEL: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "gemini-3.5-flash"))
     GEMINI_EMBEDDING_MODEL: str = Field(default_factory=lambda: os.getenv("GEMINI_EMBEDDING_MODEL", "gemini-embedding-001"))
     OPENAI_MODEL: str = Field(default_factory=lambda: os.getenv("OPENAI_MODEL", "gpt-4o"))
     HUGGINGFACE_MODEL: str = Field(default_factory=lambda: os.getenv("HUGGINGFACE_MODEL", "mistralai/Mistral-7B-Instruct-v0.3"))

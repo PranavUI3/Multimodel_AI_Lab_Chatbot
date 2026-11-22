@@ -5,7 +5,7 @@ Includes branding, New Chat, Provider Selector, Conversation History, and Docume
 
 import streamlit as st
 from typing import Any, Dict, List
-from ..services.api_client import api_client
+from services.api_client import api_client
 
 
 def render_sidebar():
