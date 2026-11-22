@@ -1,0 +1,294 @@
+/* ==============================================================
+   OmniMind AI - Modern Dark-Themed Dashboard & Chat Styling
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-primary: #0A0D14;
+    --bg-secondary: #101522;
+    --bg-tertiary: #192033;
+    --bg-card: rgba(22, 28, 45, 0.7);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.4);
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent-indigo: #6366F1;
+    --accent-violet: #8B5CF6;
+    --accent-cyan: #06B6D4;
+    --accent-emerald: #10B981;
+    --accent-rose: #F43F5E;
+    --glow-indigo: 0 0 25px rgba(99, 102, 241, 0.25);
+    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Base Body & App Container */
+.stApp {
+    background-color: var(--bg-primary) !important;
+    font-family: var(--font-main) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Header & Title Container */
+.omnimind-header {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.omnimind-logo-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #818CF8, #C084FC, #38BDF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.omnimind-tagline {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 3px;
+}
+
+/* Provider Status Badge */
+.provider-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: 1px solid var(--border-color);
+}
+
+.badge-gemini {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38BDF8;
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.badge-openai {
+    background: rgba(16, 185, 129, 0.12);
+    color: #34D399;
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.badge-huggingface {
+    background: rgba(251, 191, 36, 0.12);
+    color: #FBBF24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+/* Sidebar Styling */
+[data-testid="stSidebar"] {
+    background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: var(--border-color) !important;
+    margin: 1.25rem 0 !important;
+}
+
+/* Sidebar Logo Header */
+.sidebar-branding {
+    padding: 0.75rem 0.5rem 1.25rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.sidebar-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Sidebar Conversation List Item */
+.conv-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.conv-item:hover, .conv-item.active {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: var(--border-hover);
+    color: #FFFFFF;
+}
+
+/* Chat Welcome Screen */
+.welcome-hero {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0) 100%);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.welcome-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF 0%, #A5B4FC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.75rem;
+}
+
+.welcome-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin: 0 auto 1.75rem auto;
+    line-height: 1.6;
+}
+
+.quick-prompts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quick-prompt-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.quick-prompt-card:hover {
+    border-color: var(--accent-indigo);
+    box-shadow: var(--glow-indigo);
+    transform: translateY(-2px);
+}
+
+.quick-prompt-icon {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.quick-prompt-text {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Chat Bubbles */
+.chat-bubble-user {
+    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+    color: #FFFFFF;
+    padding: 14px 18px;
+    border-radius: 18px 18px 4px 18px;
+    margin: 8px 0;
+    max-width: 82%;
+    margin-left: auto;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    word-break: break-word;
+}
+
+.chat-bubble-assistant {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 18px 20px;
+    border-radius: 18px 18px 18px 4px;
+    margin: 8px 0;
+    max-width: 88%;
+    margin-right: auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* Citation Card */
+.citation-box {
+    background: rgba(30, 41, 59, 0.5);
+    border-left: 3px solid var(--accent-cyan);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+/* Streamlit Native Overrides */
+.stButton>button {
+    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 0.55rem 1.25rem !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton>button:hover {
+    box-shadow: 0 0 18px rgba(99, 102, 241, 0.45) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stTextInput>div>div>input {
+    background-color: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    padding: 0.65rem 1rem !important;
+}
+
+.stTextInput>div>div>input:focus {
+    border-color: var(--accent-indigo) !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Document Library Card */
+.doc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.doc-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+}
+
+.doc-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
